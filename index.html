@@ -22,14 +22,13 @@
       <!-- Sidebar -->
       <div id="sidebar" class="col-sm-2 sidenav">
         <!-- Menu -->
-        <nav id="menu">
-          <header class="major">
-            <h2>Menu</h2>
-          </header>
-          <div class="btn-group dropright" v-for="session in all_session">
-            <menu_button v-bind:title=session></menu_button>
-          </div>
-        </nav>
+        <header class="major">
+          <h2>Menu</h2>
+        </header>
+        <div class="list-group list-group-flush">
+          <menu_button v-for="session in all_session" v-bind:title=session.title v-bind:name=session.name></menu_button>
+      </div>
+
         <!-- Section -->
         <section>
           <header class="major">
@@ -65,13 +64,11 @@
   </footer>
 
   <script type="text/x-template" id="child-template">
-    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      {{title}}
-    </button>
+    <a class="list-group-item list-group-item-action" id="{{ title }}" data-toggle="list" href="#{{ title }}" role="tab" aria-controls="home">
+      {{ title }}<br />{{ name }}
+  </a>
   </script>
   <script src="static/Vue.js"></script>
 
-
 </body>
-
 </html>
